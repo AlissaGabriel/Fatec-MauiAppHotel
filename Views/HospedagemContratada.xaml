@@ -2,11 +2,55 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MauiAppHotel.Views.HospedagemContratada"
-             Title="HospedagemContratada">
-    <VerticalStackLayout>
+             Title="Hospedagem Contratada">
+    <VerticalStackLayout Margin="10" Spacing="10">
         <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
+            Text="{Binding QuartoSelecionado.Descricao}"
+            TextColor="{StaticResource Tertiary}"
+            HorizontalTextAlignment="Center" 
+            FontFamily="BangersRegular"
+            FontSize="40"/>
+
+        <Border>
+            <StackLayout Orientation="Horizontal" Spacing="10">
+
+                <HorizontalStackLayout Spacing="5">
+                    <Label Text="Adultos: "/>
+                    <Label Text="{Binding QntAdultos}" TextColor="{StaticResource Tertiary}"/>
+                </HorizontalStackLayout>
+
+                <HorizontalStackLayout Spacing="5">
+                    <Label Text="Crianças: "/>
+                    <Label Text="{Binding QntCriancas}" TextColor="{StaticResource Tertiary}"/>
+                </HorizontalStackLayout>
+
+            </StackLayout>
+        </Border>
+
+        <Border>
+            <Grid ColumnDefinitions="*, *, *" RowDefinitions="Auto, Auto">
+                <Label Grid.Column="0" Grid.Row="0" Text="Check-In: " />
+                <Label Grid.Column="1" Grid.Row="0" Text="Check-Out: " />
+                <Label Grid.Column="2" Grid.Row="0" Text="Estadia: " />
+
+                <Label Grid.Column="0" Grid.Row="1" TextColor="{StaticResource Tertiary}" 
+                       Text="{Binding DataCheckIn, StringFormat='{}{0:dd/MM/yyyy}'}"/>
+
+                <Label Grid.Column="1" Grid.Row="1" TextColor="{StaticResource Tertiary}" 
+                       Text="{Binding DataCheckOut, StringFormat='{}{0:dd/MM/yyyy}'}"/>
+
+                <Label Grid.Column="2" Grid.Row="1" TextColor="{StaticResource Tertiary}" 
+                       Text="{Binding Estadia}"/>
+            </Grid>
+        </Border>
+
+        <Border>
+            <HorizontalStackLayout Spacing="5">
+                <Label Text="Valor Total: "/>
+                <Label Text="{Binding ValorTotal, StringFormat='{}{0:c}'}" TextColor="{StaticResource Tertiary}"/>
+            </HorizontalStackLayout>
+        </Border>
+        
+        <Button Text="Voltar" Clicked="Button_Clicked" HorizontalOptions="Center"/>
     </VerticalStackLayout>
 </ContentPage>

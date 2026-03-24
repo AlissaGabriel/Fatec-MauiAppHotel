@@ -15,6 +15,8 @@ namespace MauiAppHotel
             w.Height = 600;
             w.Width = 300;
             return w;
+
+            
         }
     }
 }

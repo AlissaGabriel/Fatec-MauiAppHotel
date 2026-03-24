@@ -2,25 +2,25 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MauiAppHotel.Views.ContratacaoHospedagem"
-             Title="ContratacaoHospedagem">
+             Title="Contratação Hospedagem">
 	
 	<!-- Container Geral da Tela -->
     <VerticalStackLayout Padding="10" Spacing="10">
-		<Label VerticalOptions="Center" HorizontalOptions="Center"
-            Text="Cálculo da Diária" />
+		<Label VerticalOptions="Center" HorizontalOptions="Center" 
+               FontFamily="BangersRegular" FontSize="30"
+			   Text="Cálculo da Diária" TextColor="{StaticResource Tertiary}"/>
 
 		<!-- Container Das Quantidades de Pessoas -->
-		<Border Padding="10" StrokeShape="RoundRectangle 10">
+		<Border>
 			<VerticalStackLayout>
 
-				<!-- Grid da Quantidade de Pessoas -->
+				<!-- Grid da Quantidade de Pessoas --> 
 				<Grid RowDefinitions="Auto, Auto" ColumnDefinitions="*, *, 2*">
+                    
 					<Label Grid.Row="0" Grid.Column="0" Text="Adultos:"/>
 					<Label Grid.Row="0" Grid.Column="1" Text="{Binding Value}" BindingContext="{x:Reference stp_adultos}"/>
 					<Stepper Grid.Row="0" Grid.Column="2" x:Name="stp_adultos" Minimum="0" Maximum="10" Increment="1"/>
-				</Grid>
 
-				<Grid RowDefinitions="Auto, Auto" ColumnDefinitions="*, *, 2*">
 					<Label Grid.Row="1" Grid.Column="0" Text="Crianças: "/>
 					<Label Grid.Row="1" Grid.Column="1" Text="{Binding Value}" BindingContext="{x:Reference stp_criancas}"/>
 					<Stepper Grid.Row="1" Grid.Column="2" x:Name="stp_criancas" Minimum="0" Maximum="10" Increment="1"/>
@@ -29,7 +29,7 @@
 		</Border>
 
 		<!-- Container com "select" para pegar o quarto -->
-		<Border Padding="10">
+		<Border>
 			<Border.StrokeShape>
 				<RoundRectangle CornerRadius="15"/>
 			</Border.StrokeShape>
@@ -41,26 +41,25 @@
 		</Border>
 
 		<!-- Container com "select" para pegar as datas de entrada e saída -->
-		<Border Padding="10" StrokeShape="{RoundRectangle CornerRadius=10}">
+		<Border>
 			<VerticalStackLayout Spacing="10">
 				<Label Text="Período de Estadia" />
-				<HorizontalStackLayout>
+				<HorizontalStackLayout Spacing="5">
 					<Label Text="Check-In: "/>
 					<DatePicker x:Name="dtpck_checkin"
 								DateSelected="dtpck_checkin_DateSelected"
 								Format="dd/MM/yyyy" />
 				</HorizontalStackLayout>
 
-				<HorizontalStackLayout>
+				<HorizontalStackLayout Spacing="5">
 					<Label Text="Check-Out: "/>
 					<DatePicker x:Name="dtpck_checkout"
-								DateSelected="dtpck_checkout_DateSelected"
 								Format="dd/MM/yyyy" />
 				</HorizontalStackLayout>
 
 			</VerticalStackLayout>
 		</Border>
 
-		<Button Text="Calcular Valor" Clicked="Button_Clicked"/>
+		<Button Text="Calcular Valor" Clicked="Button_Clicked" HorizontalOptions="Center"/>
 	</VerticalStackLayout>
 </ContentPage>

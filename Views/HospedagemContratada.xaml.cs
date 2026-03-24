@@ -1,3 +1,5 @@
+using System.Threading.Tasks;
+
 namespace MauiAppHotel.Views;
 
 public partial class HospedagemContratada : ContentPage
@@ -6,4 +8,16 @@ public partial class HospedagemContratada : ContentPage
 	{
 		InitializeComponent();
 	}
+
+    private async void Button_Clicked(object sender, EventArgs e)
+    {
+		try
+		{
+			await Navigation.PopAsync();
+		}
+		catch (Exception ex)
+		{
+			await DisplayAlertAsync("Ops", ex.Message, "OK"); 
+		}
+    }
 }

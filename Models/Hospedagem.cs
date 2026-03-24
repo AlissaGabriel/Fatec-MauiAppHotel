@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Text;
 
 namespace MauiAppHotel.Models
@@ -11,8 +12,8 @@ namespace MauiAppHotel.Models
             get => quarto_selecionado;
             set
             {
-                if (value == null)
-                    throw new ArgumentNullException("Selecione um quarto.");
+                if (value == null) 
+                    throw new Exception("Selecione um quarto.");
 
                 quarto_selecionado = value;
             }  
@@ -21,13 +22,21 @@ namespace MauiAppHotel.Models
         public int QntCriancas { get; set; }
         public DateTime DataCheckIn { get; set; }
         public DateTime DataCheckOut { get; set; }
-        public int Estadia { get; set; }
+        public int Estadia 
+        {
+            /* get
+            {
+                //return DataCheckOut.Subtract(DataCheckIn).Days;
+                  return (DataCheckOut - DataCheckIn).Days;
+            }   */
+            get => (DataCheckOut - DataCheckIn).Days;
+        }
         public double ValorTotal
         {
             get 
             {
-                double valor_adultos = QntAdultos + QuartoSelecionado.ValorDiariaAdulto;
-                double valor_criancas = QntCriancas + QuartoSelecionado.ValorDiariaCrianca;
+                double valor_adultos = QntAdultos * QuartoSelecionado.ValorDiariaAdulto;
+                double valor_criancas = QntCriancas * QuartoSelecionado.ValorDiariaCrianca;
 
                 double valor_total = (valor_adultos + valor_criancas) * Estadia;
 

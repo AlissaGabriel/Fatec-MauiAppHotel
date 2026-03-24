@@ -1,4 +1,5 @@
 using MauiAppHotel.Models;
+using System.Threading.Tasks;
 
 namespace MauiAppHotel.Views;
 
@@ -17,20 +18,20 @@ public partial class ContratacaoHospedagem : ContentPage
 		{
 			Descricao = "Suíte Luxo",
 			ValorDiariaAdulto = 80.0,
-			ValorDiariaCrianca = 40
+			ValorDiariaCrianca = 40.0
 		},
 
 		new Quarto()
 		{
 			Descricao = "Suíte Superior",
 			ValorDiariaAdulto = 50.0,
-			ValorDiariaCrianca = 25
+			ValorDiariaCrianca = 25.0
 		},
 		new Quarto()
 		{
 			Descricao = "Suíte Standart",
-			ValorDiariaAdulto = 30.0,
-			ValorDiariaCrianca = 10
+			ValorDiariaAdulto = 30,
+			ValorDiariaCrianca = 10.0
 		}
 	};
 
@@ -57,16 +58,54 @@ public partial class ContratacaoHospedagem : ContentPage
 		DateTime data_selecionada = elemento.Date.Value;
 
 		dtpck_checkout.MinimumDate = data_selecionada.AddDays(1);
-		dtpck_checkout.MaximumDate = data_selecionada.AddMonths(6);
+		dtpck_checkout.MaximumDate = data_selecionada.AddMonths(2);
 	}
 
-    private void dtpck_checkout_DateSelected(object sender, DateChangedEventArgs e)
+    private async void Button_Clicked(object sender, EventArgs e)
     {
+		try
+		{
+			// Montagem do objeto com os dados da hospedagem
+			Hospedagem h = new()
+			{
+				QuartoSelecionado = (Quarto)pck_quarto.SelectedItem,
+				DataCheckIn = (DateTime)dtpck_checkin.Date,
+				DataCheckOut = (DateTime)dtpck_checkout.Date,
+				QntAdultos = Convert.ToInt32(stp_adultos.Value),
+				QntCriancas = (int)stp_criancas.Value
+			};
+			
+			// Criação da nova tela, onde serão mostrados os dados de hospedagem
+			HospedagemContratada hc = new();
 
-    }
+			// Juntando o esqueleto da tela com os dados da hospedagem
+			hc.BindingContext = h;
 
-    private void Button_Clicked(object sender, EventArgs e)
-    {
+			// Navegando de tela, indo para a tela criada anteriormente(linha 79)
+			await Navigation.PushAsync(hc);
 
+			// Tudo acima, mas escrito de forma compacta
+			/* await Navigation.PushAsync(new HospedagemContratada() 
+			{ 
+				BindingContext = h
+			}); */
+
+			// Tudo acima, mas escrito tudo junto
+			/*await Navigation.PushAsync(new HospedagemContratada()
+			{
+				BindingContext = new Hospedagem()
+				{
+					QuartoSelecionado = (Quarto)pck_quarto.SelectedItem,
+					DataCheckIn = (DateTime)dtpck_checkin.Date,
+					DataCheckOut = (DateTime)dtpck_checkout.Date,
+					QntAdultos = Convert.ToInt32(stp_adultos.Value),
+					QntCriancas = (int)stp_criancas.Value
+				}
+			});*/
+		}
+		catch (Exception ex)
+		{
+			await DisplayAlertAsync("Ops", ex.Message, "OK");
+		}
     }
 }
