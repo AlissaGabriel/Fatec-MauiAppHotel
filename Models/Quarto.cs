@@ -6,12 +6,12 @@
         public double ValorDiariaAdulto { get; set; }
         public double ValorDiariaCrianca { get; set; }
 
-        public string NomeComPreco 
+        public string NomeComPreco
         {
             get
             {
                 return $"{Descricao} Adultos: {ValorDiariaAdulto:c} Crianças: {ValorDiariaCrianca:c}";
-            } 
+            }
         }
     }
 }

@@ -8,8 +8,10 @@
     <VerticalStackLayout Padding="10" Spacing="10">
 		<Label VerticalOptions="Center" HorizontalOptions="Center" 
                FontFamily="BangersRegular" FontSize="30"
-			   Text="Cálculo da Diária" TextColor="{StaticResource Tertiary}"/>
+			   Text="Cálculo da Diária" TextColor="MediumPurple"/>
 
+		<Label x:Name="txt_usuario_logado" />
+		
 		<!-- Container Das Quantidades de Pessoas -->
 		<Border>
 			<VerticalStackLayout>

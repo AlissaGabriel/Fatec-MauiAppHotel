@@ -49,6 +49,12 @@ public partial class ContratacaoHospedagem : ContentPage
 
 		dtpck_checkout.MinimumDate = dtpck_checkin.Date.Value.AddDays(1);
 		dtpck_checkout.MaximumDate = dtpck_checkin.Date.Value.AddMonths(2);
+
+	}
+
+	protected override async void OnAppearing() 
+	{
+		txt_usuario_logado.Text = await SecureStorage.Default.GetAsync("nome_usuario");
 	}
 
 	private void dtpck_checkin_DateSelected(object sender, DateChangedEventArgs e)

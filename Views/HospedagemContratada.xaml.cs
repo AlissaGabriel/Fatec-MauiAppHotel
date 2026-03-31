@@ -20,4 +20,9 @@ public partial class HospedagemContratada : ContentPage
 			await DisplayAlertAsync("Ops", ex.Message, "OK"); 
 		}
     }
+
+    private async void Button_Clicked_Avancar(object sender, EventArgs e)
+    {
+		await Navigation.PushAsync(new Views.Login());
+    }
 }

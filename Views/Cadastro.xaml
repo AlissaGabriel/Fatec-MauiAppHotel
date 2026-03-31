@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiAppHotel.Views.Cadastro"
+             Title="Cadastro">
+
+	<VerticalStackLayout Padding="10" Margin="10">
+		<Label Text="Faça seu cadastro!" HorizontalTextAlignment="Center" Margin="40" FontSize="30" FontFamily="BangersRegular" TextColor="MediumPurple"/>
+
+		<Border Margin="10" BackgroundColor="{StaticResource Gray100}">
+			<VerticalStackLayout Spacing="10">
+				<Grid RowDefinitions="Auto, Auto, Auto, Auto, Auto, Auto" RowSpacing="10">
+					<Label Grid.Row="0" Text="Nome:" />
+					<Entry x:Name="txt_nome" Grid.Row="1" Placeholder="seu nome" />
+
+					<Label Grid.Row="2" Text="E-mail:" />
+					<Entry x:Name="txt_email" Keyboard="Email" Grid.Row="3" Placeholder="seu-email@example.com"/>
+
+					<Label Grid.Row="4" Text="Senha: "/>
+					<Entry x:Name="txt_senha" IsPassword="True" Grid.Row="5" Placeholder="informe a senha"/>
+
+				</Grid>
+				<Button Text="Cadastrar" Clicked="Button_Clicked_Cadastrar" HorizontalOptions="Center"/>
+
+			</VerticalStackLayout>
+		</Border>
+	</VerticalStackLayout>
+</ContentPage>

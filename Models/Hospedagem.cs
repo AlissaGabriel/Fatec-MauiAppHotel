@@ -8,21 +8,22 @@ namespace MauiAppHotel.Models
     public class Hospedagem
     {
         Quarto quarto_selecionado = new();
-        public Quarto QuartoSelecionado { 
+        public Quarto QuartoSelecionado
+        {
             get => quarto_selecionado;
             set
             {
-                if (value == null) 
+                if (value == null)
                     throw new Exception("Selecione um quarto.");
 
                 quarto_selecionado = value;
-            }  
-        } 
+            }
+        }
         public int QntAdultos { get; set; }
         public int QntCriancas { get; set; }
         public DateTime DataCheckIn { get; set; }
         public DateTime DataCheckOut { get; set; }
-        public int Estadia 
+        public int Estadia
         {
             /* get
             {
@@ -33,7 +34,7 @@ namespace MauiAppHotel.Models
         }
         public double ValorTotal
         {
-            get 
+            get
             {
                 double valor_adultos = QntAdultos * QuartoSelecionado.ValorDiariaAdulto;
                 double valor_criancas = QntCriancas * QuartoSelecionado.ValorDiariaCrianca;
