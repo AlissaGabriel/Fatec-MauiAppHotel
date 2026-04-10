@@ -10,9 +10,10 @@
                FontFamily="BangersRegular" FontSize="30"
 			   Text="Cálculo da Diária" TextColor="MediumPurple"/>
 
-		<Label x:Name="txt_usuario_logado" />
-		
-		<!-- Container Das Quantidades de Pessoas -->
+        <Button x:Name="btn_sair" Text="Deslogar" IsVisible="false" Clicked="btn_sair_Clicked" HorizontalOptions="End"
+        VerticalOptions="Start" FontSize="12"/>
+        <Label x:Name="txt_usuario_logado" IsVisible="false"/>
+        <!-- Container Das Quantidades de Pessoas -->
 		<Border>
 			<VerticalStackLayout>
 

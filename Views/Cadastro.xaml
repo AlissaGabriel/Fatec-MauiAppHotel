@@ -7,7 +7,7 @@
 	<VerticalStackLayout Padding="10" Margin="10">
 		<Label Text="Faça seu cadastro!" HorizontalTextAlignment="Center" Margin="40" FontSize="30" FontFamily="BangersRegular" TextColor="MediumPurple"/>
 
-		<Border Margin="10" BackgroundColor="{StaticResource Gray100}">
+		<Border Margin="10" BackgroundColor="{StaticResource Secondary}">
 			<VerticalStackLayout Spacing="10">
 				<Grid RowDefinitions="Auto, Auto, Auto, Auto, Auto, Auto" RowSpacing="10">
 					<Label Grid.Row="0" Text="Nome:" />

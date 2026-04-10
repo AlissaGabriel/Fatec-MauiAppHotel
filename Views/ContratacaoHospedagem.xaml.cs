@@ -54,7 +54,14 @@ public partial class ContratacaoHospedagem : ContentPage
 
 	protected override async void OnAppearing() 
 	{
-		txt_usuario_logado.Text = await SecureStorage.Default.GetAsync("nome_usuario");
+		string? nome_usuario = await SecureStorage.Default.GetAsync("nome_usuario");
+
+		if(nome_usuario != null)
+		{
+            txt_usuario_logado.IsVisible = true;
+			txt_usuario_logado.Text = nome_usuario;
+            btn_sair.IsVisible = true;
+        }
 	}
 
 	private void dtpck_checkin_DateSelected(object sender, DateChangedEventArgs e)
@@ -113,5 +120,19 @@ public partial class ContratacaoHospedagem : ContentPage
 		{
 			await DisplayAlertAsync("Ops", ex.Message, "OK");
 		}
+    }
+
+    private async void btn_sair_Clicked(object sender, EventArgs e)
+    {
+		bool confirmacao = await DisplayAlertAsync("Tem certeza?", "Encerrar sessão?", "OK", "Cancelar");
+
+		if(confirmacao)
+		{
+            SecureStorage.Default.Remove("nome_usuario");
+
+			txt_usuario_logado.IsVisible = false;
+			btn_sair.IsVisible = false;
+        }
+			
     }
 }
